@@ -88,7 +88,7 @@ def load_dataset(dataset_dir, batch_size, valid_batch_size=None, test_batch_size
     data = {}
     for category in ['train', 'val', 'test']:
         cat_data = np.load(os.path.join(dataset_dir, category + '.npz'))
-        data['x_' + category] = cat_data['x'][:, -in_seq:, :, 0:2]  # B T N F speed flow
+        data['x_' + category] = cat_data['x'][:, -in_seq:, :, 0:1]  # B T N F speed flow
         data['y_' + category] = cat_data['y'][:, :sequence, :, 0:1]
         if category == "train":
             data['scaler'] = StandardScaler(mean=cat_data['x'][..., 0].mean(), std=cat_data['x'][..., 0].std())

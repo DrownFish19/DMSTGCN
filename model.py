@@ -176,7 +176,7 @@ class DMSTGCN(nn.Module):
         else:
             xo = inputs
         x = self.start_conv(xo[:, [0]])
-        x_a = self.start_conv_a(xo[:, [1]])
+        # x_a = self.start_conv_a(xo[:, [1]])
         skip = 0
 
         # dynamic graph construction
@@ -198,12 +198,12 @@ class DMSTGCN(nn.Module):
             x = filter * gate
 
             # tcn for auxiliary part
-            residual_a = x_a
-            filter_a = self.filter_convs_a[i](residual_a)
-            filter_a = torch.tanh(filter_a)
-            gate_a = self.gate_convs_a[i](residual_a)
-            gate_a = torch.sigmoid(gate_a)
-            x_a = filter_a * gate_a
+            # residual_a = x_a
+            # filter_a = self.filter_convs_a[i](residual_a)
+            # filter_a = torch.tanh(filter_a)
+            # gate_a = self.gate_convs_a[i](residual_a)
+            # gate_a = torch.sigmoid(gate_a)
+            # x_a = filter_a * gate_a
 
             # skip connection
             s = x
@@ -215,17 +215,17 @@ class DMSTGCN(nn.Module):
 
             # dynamic graph convolutions
             x = self.gconv[i](x, new_supports)
-            x_a = self.gconv_a[i](x_a, new_supports_a)
+            # x_a = self.gconv_a[i](x_a, new_supports_a)
 
             # multi-faceted fusion module
-            x_a2p = self.gconv_a2p[i](x_a, new_supports_a2p)
-            x = x_a2p + x
+            # x_a2p = self.gconv_a2p[i](x_a, new_supports_a2p)
+            # x = x_a2p + x
 
             # residual and normalization
-            x_a = x_a + residual_a[:, :, :, -x_a.size(3):]
+            # x_a = x_a + residual_a[:, :, :, -x_a.size(3):]
             x = x + residual[:, :, :, -x.size(3):]
             x = self.normal[i](x)
-            x_a = self.normal_a[i](x_a)
+            # x_a = self.normal_a[i](x_a)
 
         # output layer
         x = F.relu(skip)

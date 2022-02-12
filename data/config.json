@@ -1,0 +1,44 @@
+{
+  "PEMSD4": {
+    "data_dir": "/data/home/u18112042/DMSTGCN/data/PEMSD4",
+    "num_nodes": 307,
+    "num_slots": 288,
+    "normalization": "batch"
+  },
+  "PEMSD8": {
+    "data_dir": "/data/home/u18112042/DMSTGCN/data/PEMSD8",
+    "num_nodes": 170,
+    "num_slots": 288,
+    "normalization": "batch"
+  },
+  "England": {
+    "data_dir": "/data/home/u18112042/DMSTGCN/data/England",
+    "num_nodes": 314,
+    "num_slots": 96,
+    "normalization": "layer"
+  },
+  "PEMS07": {
+    "data_dir": "./data/PEMS07",
+    "num_nodes": 883,
+    "num_slots": 288,
+    "normalization": "batch"
+  },
+  "PEMS08": {
+    "data_dir": "./data/PEMS08",
+    "num_nodes": 170,
+    "num_slots": 288,
+    "normalization": "batch"
+  },
+  "HZME_INFLOW": {
+    "data_dir": "./data/HZME_INFLOW",
+    "num_nodes": 80,
+    "num_slots": 288,
+    "normalization": "batch"
+  },
+  "HZME_OUTFLOW": {
+    "data_dir": "./data/HZME_OUTFLOW",
+    "num_nodes": 80,
+    "num_slots": 288,
+    "normalization": "batch"
+  }
+}

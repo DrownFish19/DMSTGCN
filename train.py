@@ -9,7 +9,7 @@ import json
 
 
 def main(args):
-    device = torch.device(args.device)
+    device = torch.device("cuda:0")
     config = json.load(open("data/config.json", "r"))[args.data]
     args.days = config["num_slots"]  # number of timeslots in a day which depends on the dataset
     args.num_nodes = config["num_nodes"]  # number of nodes
@@ -183,12 +183,15 @@ if __name__ == "__main__":
     parser.add_argument('--iden', type=str, default='', help='identity')
     parser.add_argument('--dims', type=int, default=32, help='dimension of embeddings for dynamic graph')
     parser.add_argument('--order', type=int, default=2, help='order of graph convolution')
+    parser.add_argument('--cuda', type=str, default='0')
 
     args = parser.parse_args()
     args.save = os.path.join('save_models/', os.path.basename(args.data) + args.iden)
     os.makedirs(args.save, exist_ok=True)
     t1 = time.time()
     metric = []
+
+    os.environ["CUDA_VISIBLE_DEVICES"] = args.cuda
 
     for i in range(args.runs):
         args.expid = i

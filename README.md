@@ -42,6 +42,8 @@ Step 2: Put them into data directories.
     python train.py --data=England
 
 ```bash
+nohup python train.py --data=PEMS03 --iden PEMS03_01 --cuda 5 > PEMS03-Iter1.log &
+nohup python train.py --data=PEMS04 --iden PEMS04_01 --cuda 7 > PEMS04-Iter1.log &
 python train.py --data=PEMS07
 python train.py --data=PEMS08
 python train.py --data=HZME_INFLOW

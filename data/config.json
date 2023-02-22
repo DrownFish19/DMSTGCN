@@ -17,6 +17,18 @@
     "num_slots": 96,
     "normalization": "layer"
   },
+  "PEMS03": {
+    "data_dir": "./data/PEMS03",
+    "num_nodes": 358,
+    "num_slots": 288,
+    "normalization": "batch"
+  },
+  "PEMS04": {
+    "data_dir": "./data/PEMS04",
+    "num_nodes": 307,
+    "num_slots": 288,
+    "normalization": "batch"
+  },
   "PEMS07": {
     "data_dir": "./data/PEMS07",
     "num_nodes": 883,
